@@ -1,6 +1,6 @@
 /* Radar Shopee: shell offline, catálogo online quando disponível. */
-const VERSION="radar-shopee-android-v1";
-const SHELL=["./","./index.html","./data.js","./manifest.webmanifest","./icons/app.svg"];
+const VERSION="radar-shopee-android-v2";
+const SHELL=["./","./index.html","./data.js","./central.js","./central.css","./manifest.webmanifest","./icons/app.svg"];
 self.addEventListener("install",event=>event.waitUntil(caches.open(VERSION).then(cache=>cache.addAll(SHELL)).then(()=>self.skipWaiting())));
 self.addEventListener("activate",event=>event.waitUntil(Promise.all([caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==VERSION).map(k=>caches.delete(k)))),self.clients.claim()])));
 self.addEventListener("fetch",event=>{
