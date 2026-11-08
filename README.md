@@ -4,7 +4,7 @@ Painel responsivo para analisar produtos encontrados na Shopee, preparar roteiro
 
 ## Abrir agora
 
-Abra `index.html` no navegador. Não precisa instalar nada. A versão inicial mostra **12 produtos de uma amostra pública coletada em 08/11/2026**, com fonte indicada. Estes números não são vendas feitas por afiliados nem vendas nacionais totais.
+Abra `index.html` no navegador. Não precisa instalar nada. A versão inicial mostra **18 referências, incluindo 6 produtos presentes nas vitrines públicas da Shopee e 12 exemplos acompanhados por terceiros, consultados em 08/11/2026**, com fonte indicada. Estes números não são vendas feitas por afiliados nem vendas nacionais totais.
 
 Você pode filtrar, ordenar, exportar CSV, criar roteiros, copiar legendas e guardar seus próprios links de afiliado por produto no navegador (localStorage). Os links salvos não são sincronizados entre dispositivos.
 
@@ -43,3 +43,10 @@ Agendamento: **segunda-feira, 09h de Brasília (UTC-3), a partir de 09/11/2026**
 ### Privacidade e custos
 
 Este projeto não faz login, não publica posts nem compra produtos. O código do site é estático. O histórico público não deve incluir suas conversões pessoais. Dependendo dos limites e das políticas do GitHub/da Shopee, pode haver restrições de execução. Não há integração com TikTok ou WhatsApp para publicar automaticamente.
+## Nova Central de divulgação Android (versão 1.2)
+
+A aba **Divulgar e compartilhar** permite escolher um produto, cadastrar um anúncio real da Shopee por URL pública, salvar seu próprio link de afiliado, copiar roteiro e legenda, e abrir WhatsApp, Instagram, TikTok, Facebook ou Telegram. No APK Android o sistema utiliza a folha de compartilhamento nativa e tenta abrir o app escolhido com o texto. **A publicação e a seleção do vídeo são sempre confirmadas pelo usuário; não há publicação automática no Instagram ou TikTok.**
+
+**Produtos reais:** seis nomes e preços observados em vitrines públicas de categorias Shopee foram acrescentados. São referências verificadas na vitrine, **não anúncios individuais rastreáveis**; o próprio usuário precisa escolher o anúncio exato e gerar o link pela sua conta. Preços podem mudar e o número de vendas não é conhecido. Quando a Shopee Affiliate Open API estiver configurada nos Secrets, os produtos e seus `offerLink` poderão vir da API oficial no agendamento semanal, desde que os campos e a autorização estejam disponíveis.
+
+**Conectar Shopee:** toque **Entrar na Shopee Afiliados** no app para abrir o portal oficial separadamente. Esse botão não acessa nem copia sua sessão, e não existe entrada de senha no app. Para API, solicite liberação da Open API no portal e configure `SHOPEE_APP_ID` e `SHOPEE_APP_SECRET` exclusivamente nos Secrets do GitHub, nunca neste site ou em mensagens. Para gerar links em tempo real com um clique usando `generateShortLink`, será necessário acrescentar um backend protegido e configurar credenciais, o que não está ativado nesta versão estática.
