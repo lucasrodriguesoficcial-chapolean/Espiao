@@ -31,7 +31,7 @@ jobs:
       - name: Empacotar dados iniciais para funcionar offline
         run: |
           mkdir -p android/app/src/main/assets
-          cp index.html data.js android/app/src/main/assets/
+          cp index.html data.js central.js central.css android/app/src/main/assets/
       - name: Compilar APK de teste
         working-directory: android
         run: gradle --no-daemon assembleDebug
