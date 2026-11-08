@@ -63,6 +63,26 @@ public class MainActivity extends Activity {
         if(!loadedOffline){ loadedOffline=true;runOnUiThread(()->webView.loadUrl(OFFLINE));}
     }
     public final class AndroidBridge {
+        @JavascriptInterface public void shareText(String text, String platform){
+            runOnUiThread(()->{
+                Intent send=new Intent(Intent.ACTION_SEND);
+                send.setType("text/plain");
+                send.putExtra(Intent.EXTRA_TEXT,text);
+                String pkg="";
+                if("whatsapp".equals(platform))pkg="com.whatsapp";
+                else if("instagram".equals(platform))pkg="com.instagram.android";
+                else if("tiktok".equals(platform))pkg="com.zhiliaoapp.musically";
+                else if("facebook".equals(platform))pkg="com.facebook.katana";
+                else if("telegram".equals(platform))pkg="org.telegram.messenger";
+                if(!pkg.isEmpty()){
+                    send.setPackage(pkg);
+                    try{startActivity(send);return;}catch(ActivityNotFoundException ignored){
+                        send.setPackage(null);
+                    }
+                }
+                try{startActivity(Intent.createChooser(send,"Compartilhar conteúdo"));}catch(ActivityNotFoundException ignored){}
+            });
+        }
         @JavascriptInterface public void copyText(String text){
             runOnUiThread(()->{
                 ClipboardManager cb=(ClipboardManager)getSystemService(Context.CLIPBOARD_SERVICE);
