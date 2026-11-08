@@ -76,7 +76,7 @@
   const url=safe(el('central-add-url').value.trim());
   const val=el('central-add-price').value;
   if(name.length<5){toast('Informe o título do anúncio (mínimo 5 letras).');return}
-  if(!url || !/^https?:\/\/([^/]*\.)?(shopee\.com\.br|shopee\.com|s\.shopee\.com\.br)$/i.test(new URL(url).hostname.replace(/^www\./,''))) {toast('Cole um link válido da Shopee.');return}
+  if(!url || !['shopee.com.br','www.shopee.com.br','s.shopee.com.br','shopee.com','www.shopee.com'].includes(new URL(url).hostname.toLowerCase())) {toast('Cole um link válido da Shopee.');return}
   const id='manual-'+Date.now();
   const p={id,name,price:Math.max(0,Number(val)||0),sales:0,rating:0,emoji:'🛍️',category:'Adicionado por você',source:'Cadastro manual',product_link:url,offer_link:''};
   imports.unshift(p);imports=imports.slice(0,80);localStorage.setItem(key,JSON.stringify(imports));
